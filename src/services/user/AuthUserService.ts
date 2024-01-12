@@ -1,4 +1,6 @@
 import prismaClient from '../../prisma';
+import { compare } from 'bcryptjs';
+import { sign } from 'jsonwebtoken';
 
 interface AuthRequest{
   email: string,
@@ -11,17 +13,42 @@ class AuthUserService{
       throw new Error('Email/password incorrect.');
     };
 
-    const userAlreadyExists = await prismaClient.user.findFirst({
+    const user = await prismaClient.user.findFirst({
       where:{
         email: email,
       },
     });
 
-    if(!userAlreadyExists){
+    if(!user){
       throw new Error('Email/password incorrect.');
     };
 
-    return { ok: true };
+    const passwordCompare = await compare(password, user?.password);
+
+    if(!passwordCompare){
+      throw new Error('Email/password incorrect.');
+    };
+
+    const token = sign(
+      {
+        name: user.name,
+        email: user.email,
+      },
+      process.env.JWT_SECRET,
+      {
+        subject: user.id,
+        expiresIn: '30d',
+      },
+    );
+
+    return{
+      id: user?.id,
+      name: user?.name,
+      email: user?.email,
+      contact: user?.contact,
+      avatar: user?.avatar,
+      token,
+    };
   };
 };
 
