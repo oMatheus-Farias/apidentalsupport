@@ -9,3 +9,63 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Clinic{
+  id String @id @default(uuid())
+  name String
+  address String
+  contact String
+  operation String
+  email String
+  password String
+  status Boolean @default(true)
+  banner String? @default("")
+  created_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  @@map("clinics")
+  products Product[]
+  services Service[]
+}
+
+model User{
+  id String @id @default(uuid())
+  name String
+  email String
+  contact String
+  password String
+  avatar String? @default("")
+  created_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  @@map("users")
+  services Service[]
+}
+
+model Product{
+  id String @id @default(uuid())
+  name String
+  price Float
+  status Boolean @default(true)
+  created_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  @@map("products")
+  clinic Clinic @relation(fields: [clinic_id], references: [id])
+  clinic_id String
+  services Service[]
+}
+
+model Service{
+  id String @id @default(uuid())
+  created_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  @@map("services")
+  product Product @relation(fields: [product_id], references: [id])
+  product_id String
+  clinic Clinic @relation(fields: [clinic_id], references: [id])
+  clinic_id String
+  user User @relation(fields: [user_id], references: [id])
+  user_id String
+}
