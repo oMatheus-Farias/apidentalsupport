@@ -9,6 +9,8 @@ import { DetailUserController } from './controllers/user/DetailUserController';
 import { UpdateUserController } from './controllers/user/UpdateUserController';
 import { UpdateUserAvatarController } from './controllers/user/UpdateUserAvatarController';
 
+import { CreateClinicController } from './controllers/clinic/CreateClinicController';
+
 import { isAuthenticatedUser } from './middleware/isAuthenticatedUser';
 
 import uploadConfig from './config/multer';
@@ -20,5 +22,7 @@ router.post('/session', new AuthUserController().handle);
 router.get('/me', isAuthenticatedUser, new DetailUserController().handle);
 router.put('/user', isAuthenticatedUser, new UpdateUserController().handle);
 router.put('/avatar', isAuthenticatedUser, upload.single('file'), new UpdateUserAvatarController().handle);
+
+router.post('/clinic', new CreateClinicController().handle);
 
 export { router };
