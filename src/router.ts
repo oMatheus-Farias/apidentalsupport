@@ -10,6 +10,7 @@ import { UpdateUserController } from './controllers/user/UpdateUserController';
 import { UpdateUserAvatarController } from './controllers/user/UpdateUserAvatarController';
 
 import { CreateClinicController } from './controllers/clinic/CreateClinicController';
+import { AuthClinicController } from './controllers/clinic/AuthClinicController';
 
 import { isAuthenticatedUser } from './middleware/isAuthenticatedUser';
 
@@ -24,5 +25,6 @@ router.put('/user', isAuthenticatedUser, new UpdateUserController().handle);
 router.put('/avatar', isAuthenticatedUser, upload.single('file'), new UpdateUserAvatarController().handle);
 
 router.post('/clinic', new CreateClinicController().handle);
+router.post('/session/clinic', new AuthClinicController().handle);
 
 export { router };
