@@ -58,7 +58,13 @@ model Product{
 
 model Service{
   id String @id @default(uuid())
+  nameClinic String?
+  address String?
+  contactClinic String?
   dateTime String
+  customer String?
+  contactCustomer String?
+  nameProduct String?
   created_at DateTime? @default(now())
   update_at DateTime? @default(now())
 
