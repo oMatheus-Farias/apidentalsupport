@@ -24,6 +24,7 @@ import { isAuthenticatedUser } from './middleware/isAuthenticatedUser';
 import { isAuthenticatedClinic } from './middleware/isAuthenticatedClinic';
 
 import uploadConfig from './config/multer';
+import { ListClinicController } from './controllers/user/ListClinicController';
 
 const upload = multer(uploadConfig.upload('./tmp'));
 
@@ -32,6 +33,7 @@ router.post('/session', new AuthUserController().handle);
 router.get('/me', isAuthenticatedUser, new DetailUserController().handle);
 router.put('/user', isAuthenticatedUser, new UpdateUserController().handle);
 router.put('/avatar', isAuthenticatedUser, upload.single('file'), new UpdateUserAvatarController().handle);
+router.get('/clinics', isAuthenticatedUser, new ListClinicController().handle);
 
 router.post('/clinic', new CreateClinicController().handle);
 router.post('/session/clinic', new AuthClinicController().handle);
