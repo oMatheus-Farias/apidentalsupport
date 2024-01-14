@@ -20,6 +20,7 @@ import { DetailClinicController } from './controllers/clinic/DetailClinicControl
 import { UpdateClinicController } from './controllers/clinic/UpdateClinicController';
 import { UpdateClinicBannerController } from './controllers/clinic/UpdateClinicBannerController';
 import { ListServicesClinicController } from './controllers/clinic/ListServicesClinicController';
+import { DeleteServiceClinicController } from './controllers/clinic/DeleteServiceClinicController';
 
 import { CreateProductController } from './controllers/product/CreateProductController';
 import { ListProductsController } from './controllers/product/ListProductsController';
@@ -53,6 +54,7 @@ router.get('/me/clinic', isAuthenticatedClinic, new DetailClinicController().han
 router.put('/clinic', isAuthenticatedClinic, new UpdateClinicController().handle);
 router.put('/banner', isAuthenticatedClinic, upload.single('file'), new UpdateClinicBannerController().handle);
 router.get('/clinic/services', isAuthenticatedClinic, new ListServicesClinicController().handle);
+router.delete('/clinic/deleteservice', isAuthenticatedClinic, new DeleteServiceClinicController().handle);
 
 router.post('/product', isAuthenticatedClinic, new CreateProductController().handle);
 router.get('/products', isAuthenticatedClinic, new ListProductsController().handle);
