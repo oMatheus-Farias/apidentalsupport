@@ -22,6 +22,7 @@ import { CreateProductController } from './controllers/product/CreateProductCont
 import { ListProductsController } from './controllers/product/ListProductsController';
 import { UpdateProductController } from './controllers/product/UpdateProductController';
 import { DeleteProductController } from './controllers/product/DeleteProductController';
+import { DetailProductUniqueController } from './controllers/product/DetailProductUniqueController';
 
 import { CreateServiceController } from './controllers/service/CreateServiceController';
 
@@ -51,6 +52,7 @@ router.post('/product', isAuthenticatedClinic, new CreateProductController().han
 router.get('/products', isAuthenticatedClinic, new ListProductsController().handle);
 router.put('/product', isAuthenticatedClinic, new UpdateProductController().handle);
 router.delete('/product', isAuthenticatedClinic, new DeleteProductController().handle);
+router.get('/product/unique', isAuthenticatedUser, new DetailProductUniqueController().handle);
 
 router.post('/service', isAuthenticatedUser, new CreateServiceController().handle);
 
