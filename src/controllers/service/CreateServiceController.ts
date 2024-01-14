@@ -3,15 +3,32 @@ import { CreateServiceService } from '../../services/service/CreateServiceServic
 
 class CreateServiceController{
   async handle(req: Request, res: Response){
-    const { product_id, clinic_id, user_id, dateTime } = req.body;
+    const { 
+      nameClinic, 
+      address, 
+      contactClinic,
+      dateTime, 
+      customer, 
+      contactCustomer, 
+      nameProduct, 
+      product_id, 
+      clinic_id, 
+      user_id  
+    } = req.body;
 
     const createServiceService = new CreateServiceService();
 
     const service = await createServiceService.execute({
+      nameClinic, 
+      address, 
+      contactClinic,
+      dateTime, 
+      customer, 
+      contactCustomer, 
+      nameProduct, 
       product_id, 
       clinic_id, 
-      user_id,
-      dateTime,
+      user_id,  
     });
 
     return res.json(service);
