@@ -15,6 +15,8 @@ import { DetailClinicController } from './controllers/clinic/DetailClinicControl
 import { UpdateClinicController } from './controllers/clinic/UpdateClinicController';
 import { UpdateClinicBannerController } from './controllers/clinic/UpdateClinicBannerController';
 
+import { CreateProductController } from './controllers/product/CreateProductController';
+
 import { isAuthenticatedUser } from './middleware/isAuthenticatedUser';
 import { isAuthenticatedClinic } from './middleware/isAuthenticatedClinic';
 
@@ -33,5 +35,7 @@ router.post('/session/clinic', new AuthClinicController().handle);
 router.get('/me/clinic', isAuthenticatedClinic, new DetailClinicController().handle);
 router.put('/clinic', isAuthenticatedClinic, new UpdateClinicController().handle);
 router.put('/banner', isAuthenticatedClinic, upload.single('file'), new UpdateClinicBannerController().handle);
+
+router.post('/product', isAuthenticatedClinic, new CreateProductController().handle);
 
 export { router };
