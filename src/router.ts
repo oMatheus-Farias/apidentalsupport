@@ -8,6 +8,8 @@ import { AuthUserController } from './controllers/user/AuthUserController';
 import { DetailUserController } from './controllers/user/DetailUserController';
 import { UpdateUserController } from './controllers/user/UpdateUserController';
 import { UpdateUserAvatarController } from './controllers/user/UpdateUserAvatarController';
+import { ListClinicController } from './controllers/user/ListClinicController';
+import { ListProductsClinicController } from './controllers/user/ListProductsClinicController';
 
 import { CreateClinicController } from './controllers/clinic/CreateClinicController';
 import { AuthClinicController } from './controllers/clinic/AuthClinicController';
@@ -24,7 +26,6 @@ import { isAuthenticatedUser } from './middleware/isAuthenticatedUser';
 import { isAuthenticatedClinic } from './middleware/isAuthenticatedClinic';
 
 import uploadConfig from './config/multer';
-import { ListClinicController } from './controllers/user/ListClinicController';
 
 const upload = multer(uploadConfig.upload('./tmp'));
 
@@ -34,6 +35,7 @@ router.get('/me', isAuthenticatedUser, new DetailUserController().handle);
 router.put('/user', isAuthenticatedUser, new UpdateUserController().handle);
 router.put('/avatar', isAuthenticatedUser, upload.single('file'), new UpdateUserAvatarController().handle);
 router.get('/clinics', isAuthenticatedUser, new ListClinicController().handle);
+router.get('/products/clinic', isAuthenticatedUser, new ListProductsClinicController().handle);
 
 router.post('/clinic', new CreateClinicController().handle);
 router.post('/session/clinic', new AuthClinicController().handle);
