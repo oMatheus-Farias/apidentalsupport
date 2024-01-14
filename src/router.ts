@@ -12,6 +12,7 @@ import { ListClinicController } from './controllers/user/ListClinicController';
 import { ListProductsClinicController } from './controllers/user/ListProductsClinicController';
 import { DetailClinicUniqueController } from './controllers/user/DetailClinicUniqueController';
 import { ListServicesController } from './controllers/user/ListServicesController';
+import { DeleteServiceController } from './controllers/user/DeleteServiceController';
 
 import { CreateClinicController } from './controllers/clinic/CreateClinicController';
 import { AuthClinicController } from './controllers/clinic/AuthClinicController';
@@ -43,6 +44,7 @@ router.get('/clinics', isAuthenticatedUser, new ListClinicController().handle);
 router.get('/products/clinic', isAuthenticatedUser, new ListProductsClinicController().handle);
 router.get('/clinic/unique', isAuthenticatedUser, new DetailClinicUniqueController().handle);
 router.get('/services', isAuthenticatedUser, new ListServicesController().handle);
+router.delete('/user/deleteservice', isAuthenticatedUser, new DeleteServiceController().handle);
 
 router.post('/clinic', new CreateClinicController().handle);
 router.post('/session/clinic', new AuthClinicController().handle);
