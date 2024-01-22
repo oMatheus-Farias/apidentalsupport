@@ -15,6 +15,7 @@ class DetailClinicUniqueService{
         name: true,
         address: true,
         contact: true,
+        operation: true,
         banner: true,
       },
     });
