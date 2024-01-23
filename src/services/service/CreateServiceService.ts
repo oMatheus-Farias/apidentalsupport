@@ -8,7 +8,6 @@ interface CreateServiceRequest{
   customer: string,
   contactCustomer: string,
   nameProduct: string,
-  product_id: string,
   clinic_id: string,
   user_id: string,
 };
@@ -22,7 +21,6 @@ class CreateServiceService{
     customer, 
     contactCustomer, 
     nameProduct, 
-    product_id, 
     clinic_id, 
     user_id 
   }: CreateServiceRequest){
@@ -39,7 +37,6 @@ class CreateServiceService{
         customer,
         contactCustomer,
         nameProduct,
-        product_id,
         clinic_id,
         user_id,
       },

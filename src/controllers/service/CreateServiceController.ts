@@ -11,7 +11,6 @@ class CreateServiceController{
       customer, 
       contactCustomer, 
       nameProduct, 
-      product_id, 
       clinic_id, 
       user_id  
     } = req.body;
@@ -26,7 +25,6 @@ class CreateServiceController{
       customer, 
       contactCustomer, 
       nameProduct, 
-      product_id, 
       clinic_id, 
       user_id,  
     });

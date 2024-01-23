@@ -53,7 +53,6 @@ model Product{
   @@map("products")
   clinic Clinic @relation(fields: [clinic_id], references: [id])
   clinic_id String
-  services Service[]
 }
 
 model Service{
@@ -69,8 +68,6 @@ model Service{
   update_at DateTime? @default(now())
 
   @@map("services")
-  product Product @relation(fields: [product_id], references: [id])
-  product_id String
   clinic Clinic @relation(fields: [clinic_id], references: [id])
   clinic_id String
   user User @relation(fields: [user_id], references: [id])
