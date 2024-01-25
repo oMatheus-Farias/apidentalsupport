@@ -4,7 +4,7 @@ import { UpdateClinicService } from '../../services/clinic/UpdateClinicService';
 class UpdateClinicController{
   async handle(req: Request, res: Response){
     const clinic_id = req.clinic_id;
-    const { name, address, contact, operation } = req.body;
+    const { name, address, contact, operation, status } = req.body;
 
     const updateClinicService = new UpdateClinicService();
 
@@ -14,6 +14,7 @@ class UpdateClinicController{
       address,
       contact,
       operation,
+      status,
     });
 
     return res.json(updateClinic);

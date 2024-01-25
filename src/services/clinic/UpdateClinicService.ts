@@ -6,10 +6,11 @@ interface UpdateClinicRequest{
   address: string,
   contact: string,
   operation: string,
+  status: boolean,
 };
 
 class UpdateClinicService{
-  async execute({ clinic_id, name, address, contact, operation }: UpdateClinicRequest){
+  async execute({ clinic_id, name, address, contact, operation, status }: UpdateClinicRequest){
     if(name === '' || address === '' || contact === '' || operation === ''){
       throw new Error('Fill in all fields.');
     };
@@ -23,6 +24,7 @@ class UpdateClinicService{
         address,
         contact,
         operation,
+        status,
       },
       select:{
         id: true,
@@ -30,6 +32,7 @@ class UpdateClinicService{
         address: true,
         contact: true,
         operation: true,
+        status: true,
       },
     });
 

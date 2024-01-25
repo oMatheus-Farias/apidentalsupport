@@ -19,7 +19,6 @@ class ListServicesClinicService{
         customer: true,
         contactCustomer: true,
         nameProduct: true,
-        product_id: true,
         clinic_id: true,
         user_id: true,
       },
