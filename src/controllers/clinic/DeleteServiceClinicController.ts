@@ -4,7 +4,7 @@ import { DeleteServiceClinicService } from '../../services/clinic/DeleteServiceC
 class DeleteServiceClinicController{
   async handle(req: Request, res: Response){
     const clinic_id = req.clinic_id;
-    const { service_id } = req.body;
+    const service_id = req.query.service_id as string;
 
     const deleteServiceClinicService = new DeleteServiceClinicService();
     
