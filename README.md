@@ -19,18 +19,6 @@ O Dental Support é uma plataforma digital dedicada aos serviços odontológicos
   
 - **Tela de Agenda:** Visualização de todos os serviços marcados pelos pacientes. Modal com detalhes da consulta e informações do paciente. Opção para cancelamento de consultas.
 - **Perfil Profissional:** Edição de nome, localização e contato. Salvamento de alterações e opção para logout.
-  
-### ⚙️ Pré-requisitos
-
-- npm ou yarn
-
-### 🔨 Guia de instalação
-
-1. Clone o repositório: `git clone https://github.com/oMatheus-Farias/appdentalsupport.git`>
-2. Navegue até o diretório do projeto: `cd appdentalsupport`
-3. Instale as dependências: `npm install` (ou use o gerenciador de pacotes apropriado)
-4. Inicie o servidor: `npm run dev` (ou use o comando adequado)
-5. O aplicativo estará disponível no localhost que aparecera no seu painel ex: [http://localhost:3000](http://localhost:3000/)
 
 ### Desenvolvimento
 
